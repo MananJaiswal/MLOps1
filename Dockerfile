@@ -13,5 +13,5 @@ RUN pip3 install scipy
 RUN pip3 install sklearn
 RUN pip3 install pandas
 RUN pip3 install scikit-learn
-
+COPY . /dataset
 CMD [ "python3","/mlops/BT_Detection.py" ]
