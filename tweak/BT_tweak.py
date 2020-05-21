@@ -82,8 +82,8 @@ def base_model(neuron):
     top_model = Dense(len(folders), activation='softmax')(x)
     model = Model(inputs=vgg.input, outputs=top_model)
     model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+    model.summary()
     return model
-
 
 
 
@@ -101,10 +101,12 @@ def build_model():
     epochs=3,
     steps_per_epoch=len(training_set),
     validation_steps=len(test_set))
+    
     test_accuracy=r.history['val_acc'][-1]
+    print(test_accuracy)
     accuracy=test_accuracy*100
+    print(accuracy)
     return accuracy
-
 
 # In[ ]:
 
@@ -128,7 +130,7 @@ def resetWeights():
 # In[ ]:
 
 
-while accuracy < 85 and count < 10:
+while accuracy < 85 and count < 3:
     print("Updating model....")
     model = base_model(neuron*2)
     neuron = neuron*2
