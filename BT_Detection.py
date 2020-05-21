@@ -85,7 +85,6 @@ test_set = test_datagen.flow_from_directory('/dataset/brain_tumor_dataset/Test',
 
 
 num_pixels = IMAGE_SIZE[1]
-num_pixels
 
 
 # In[11]:
@@ -106,21 +105,11 @@ def base_model():
 model = base_model()
 
 
-# In[15]:
-
-
-model.summary()
-
-
-
 r=model.fit_generator(training_set,
   validation_data=test_set,
   epochs=1,
   steps_per_epoch=len(training_set),
   validation_steps=len(test_set))
-
-model.save('/root/MLOps/cnn/braintumour_new_model2.h5')
-
 
 test_accuracy=r.history['val_acc'][0]
 
@@ -131,6 +120,8 @@ file1=open("result.txt","w")
 
 
 file1.write(str(accuracy))
+
+model.save('braintumour_new_model2.h5')
 
 
 
