@@ -133,7 +133,6 @@ file1=open("result.txt","w")
 file1.write(str(accuracy))
 
 
-file1.close()
 
 
 
