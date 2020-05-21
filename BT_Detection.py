@@ -72,12 +72,12 @@ test_datagen = ImageDataGenerator(rescale = 1./255)
 
 training_set = train_datagen.flow_from_directory('/dataset/brain_tumor_dataset/Train',
                                                  target_size = (224, 224),
-                                                 batch_size = 8,
+                                                 batch_size = 4,
                                                  class_mode = 'categorical')
 
 test_set = test_datagen.flow_from_directory('/dataset/brain_tumor_dataset/Test',
                                             target_size = (224, 224),
-                                            batch_size = 8,
+                                            batch_size = 4,
                                             class_mode = 'categorical')
 
 
@@ -110,19 +110,19 @@ r=model.fit_generator(training_set,
   epochs=1,
   steps_per_epoch=len(training_set),
   validation_steps=len(test_set))
-
+print("hey")
 test_accuracy=r.history['val_acc'][0]
-
+print("hey")
 
 accuracy = test_accuracy*100
-
+print("hey")
 file1=open("result.txt","w")
-
+print(accuracy)
 
 file1.write(str(accuracy))
-
+print("hey")
 model.save('braintumour_new_model2.h5')
-
+print("hey")
 
 
 
