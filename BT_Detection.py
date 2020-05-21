@@ -72,12 +72,12 @@ test_datagen = ImageDataGenerator(rescale = 1./255)
 
 training_set = train_datagen.flow_from_directory('/dataset/brain_tumor_dataset/Train',
                                                  target_size = (224, 224),
-                                                 batch_size = 32,
+                                                 batch_size = 8,
                                                  class_mode = 'categorical')
 
 test_set = test_datagen.flow_from_directory('/dataset/brain_tumor_dataset/Test',
                                             target_size = (224, 224),
-                                            batch_size = 32,
+                                            batch_size = 8,
                                             class_mode = 'categorical')
 
 
