@@ -104,7 +104,7 @@ def base_model():
 
 model = base_model()
 
-
+model.summary()
 r=model.fit_generator(training_set,
   validation_data=test_set,
   epochs=1,
