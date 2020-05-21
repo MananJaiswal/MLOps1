@@ -114,10 +114,10 @@ model.summary()
 
 
 r=model.fit_generator(training_set,
-                         samples_per_epoch = 64,
-                         nb_epoch = 1,
-                         validation_data = test_set,
-                         nb_val_samples = 32)
+  validation_data=test_set,
+  epochs=1,
+  steps_per_epoch=len(training_set),
+  validation_steps=len(test_set))
 
 # In[20]:
 
