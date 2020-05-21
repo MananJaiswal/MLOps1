@@ -128,14 +128,14 @@ r.history
 # In[21]:
 
 
-train_accuracy=r.history['accuracy'][-1]
+train_accuracy=r.history['acc'][-1]
 train_accuracy
 
 
 # In[22]:
 
 
-test_accuracy=r.history['val_accuracy'][-1]
+test_accuracy=r.history['val_acc'][-1]
 test_accuracy
 
 
