@@ -25,8 +25,8 @@ IMAGE_SIZE = [224,224]
 # In[3]:
 
 
-train_path = 'C:/Users/LENOVO/Desktop/Brain Tumour Detection/brain_tumor_dataset/Train'
-valid_path = 'C:/Users/LENOVO/Desktop/Brain Tumour Detection/brain_tumor_dataset/Test'
+train_path = 'brain_tumor_dataset/Train'
+valid_path = 'brain_tumor_dataset/Test'
 
 
 # In[4]:
@@ -45,7 +45,7 @@ for layer in vgg.layers:
 # In[6]:
 
 
-folders = glob('C:/Users/LENOVO/Desktop/Brain Tumour Detection/brain_tumor_dataset/Train/*')
+folders = glob('brain_tumor_dataset/Train/*')
 
 
 # In[7]:
@@ -70,12 +70,12 @@ train_datagen = ImageDataGenerator(rescale = 1./255,
 
 test_datagen = ImageDataGenerator(rescale = 1./255)
 
-training_set = train_datagen.flow_from_directory('C:/Users/LENOVO/Desktop/Brain Tumour Detection/brain_tumor_dataset/Train',
+training_set = train_datagen.flow_from_directory('brain_tumor_dataset/Train',
                                                  target_size = (224, 224),
                                                  batch_size = 32,
                                                  class_mode = 'categorical')
 
-test_set = test_datagen.flow_from_directory('C:/Users/LENOVO/Desktop/Brain Tumour Detection/brain_tumor_dataset/Test',
+test_set = test_datagen.flow_from_directory('brain_tumor_dataset/Test',
                                             target_size = (224, 224),
                                             batch_size = 32,
                                             class_mode = 'categorical')
@@ -100,18 +100,6 @@ def base_model():
     return model
 
 
-# In[12]:
-
-
-#model = Model(inputs=vgg.input, outputs=top_model)
-
-
-# In[13]:
-
-
-#model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
-
-
 # In[14]:
 
 
@@ -124,41 +112,12 @@ model = base_model()
 model.summary()
 
 
-# In[16]:
-
-
-#from keras_preprocessing.image import ImageDataGenerator
-
-
-# In[17]:
-
 
 r=model.fit_generator(training_set,
                          samples_per_epoch = 64,
                          nb_epoch = 5,
                          validation_data = test_set,
                          nb_val_samples = 32)
-
-
-# In[18]:
-
-
-plt.plot(r.history['loss'], label='train loss')
-plt.plot(r.history['val_loss'], label='val loss')
-plt.legend()
-plt.show()
-plt.savefig('LossVal_loss')
-
-
-# In[19]:
-
-
-plt.plot(r.history['accuracy'], label='train acc')
-plt.plot(r.history['val_accuracy'], label='test acc')
-plt.legend()
-plt.show()
-plt.savefig('AccVal_acc')
-
 
 # In[20]:
 
