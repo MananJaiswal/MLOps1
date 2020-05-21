@@ -119,7 +119,7 @@ r=model.fit_generator(training_set,
   steps_per_epoch=len(training_set),
   validation_steps=len(test_set))
 
-model.save('braintumour_new_model2.h5')
+model.save('/root/MLOps/cnn/braintumour_new_model2.h5')
 
 
 test_accuracy=r.history['val_acc'][0]
