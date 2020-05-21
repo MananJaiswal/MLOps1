@@ -25,8 +25,8 @@ IMAGE_SIZE = [224,224]
 # In[ ]:
 
 
-train_path = 'brain_tumor_dataset/Train'
-valid_path = 'brain_tumor_dataset/Test'
+train_path = '/dataset/brain_tumor_dataset/Train'
+valid_path = '/dataset/brain_tumor_dataset/Test'
 
 
 # In[ ]:
@@ -45,7 +45,7 @@ for layer in vgg.layers:
 # In[ ]:
 
 
-folders = glob('brain_tumor_dataset/Train/*')
+folders = glob('/dataset/brain_tumor_dataset/Train/*')
 
 
 # In[ ]:
@@ -64,12 +64,12 @@ train_datagen = ImageDataGenerator(rescale = 1./255,
 
 test_datagen = ImageDataGenerator(rescale = 1./255)
 
-training_set = train_datagen.flow_from_directory('brain_tumor_dataset/Train',
+training_set = train_datagen.flow_from_directory('/dataset/brain_tumor_dataset/Train',
                                                  target_size = (224, 224),
                                                  batch_size = 32,
                                                  class_mode = 'categorical')
 
-test_set = test_datagen.flow_from_directory('brain_tumor_dataset/Test',
+test_set = test_datagen.flow_from_directory('/dataset/brain_tumor_dataset/Test',
                                             target_size = (224, 224),
                                             batch_size = 32,
                                             class_mode = 'categorical')
@@ -90,13 +90,6 @@ def base_model(neuron):
     return model
 
 
-# In[ ]:
-
-
-
-
-
-# In[ ]:
 
 
 neuron = 5
@@ -110,10 +103,10 @@ accuracy = 0.0
 def build_model():
     r=model.fit_generator(training_set,
                          samples_per_epoch = 64,
-                         nb_epoch = 5,
+                         nb_epoch = 3,
                          validation_data = test_set,
                          nb_val_samples = 32)
-    test_accuracy=r.history['val_accuracy'][-1]
+    test_accuracy=r.history['val_acc'][-1]
     accuracy=test_accuracy*100
     return accuracy
 
