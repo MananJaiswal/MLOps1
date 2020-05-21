@@ -84,7 +84,7 @@ test_set = test_datagen.flow_from_directory('/dataset/brain_tumor_dataset/Test',
 # In[10]:
 
 
-num_pixels = IMAGE_SIZE[1]*IMAGE_SIZE[1]
+num_pixels = IMAGE_SIZE[1]
 num_pixels
 
 
