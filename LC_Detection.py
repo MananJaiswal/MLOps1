@@ -11,38 +11,21 @@ import pandas as pd
 # In[2]:
 
 
-dataset=pd.read_csv('C:/Users/LENOVO/Desktop/Brain Tumour Detection/lung_cancer_examples.csv')
+dataset=pd.read_csv('/dataset/lung_cancer_examples.csv')
 
-
-# In[3]:
-
-
-dataset.head()
-
-
-# In[4]:
 
 
 del dataset["Name"]
 del dataset["Surname"]
-dataset.tail()
 
-
-# In[5]:
 
 
 x=dataset.iloc[:,0:4]
 y=dataset.iloc[:,4:]
 
 
-# In[7]:
-
-
 from sklearn.model_selection import train_test_split
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.20 ,random_state=0)
-
-
-# In[6]:
 
 
 from sklearn import tree
