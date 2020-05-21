@@ -25,8 +25,8 @@ IMAGE_SIZE = [224,224]
 # In[3]:
 
 
-train_path = 'brain_tumor_dataset/Train'
-valid_path = 'brain_tumor_dataset/Test'
+train_path = '/dataset/brain_tumor_dataset/Train'
+valid_path = '/dataset/brain_tumor_dataset/Test'
 
 
 # In[4]:
@@ -70,12 +70,12 @@ train_datagen = ImageDataGenerator(rescale = 1./255,
 
 test_datagen = ImageDataGenerator(rescale = 1./255)
 
-training_set = train_datagen.flow_from_directory('brain_tumor_dataset/Train',
+training_set = train_datagen.flow_from_directory('/dataset/brain_tumor_dataset/Train',
                                                  target_size = (224, 224),
                                                  batch_size = 32,
                                                  class_mode = 'categorical')
 
-test_set = test_datagen.flow_from_directory('brain_tumor_dataset/Test',
+test_set = test_datagen.flow_from_directory('/dataset/brain_tumor_dataset/Test',
                                             target_size = (224, 224),
                                             batch_size = 32,
                                             class_mode = 'categorical')
@@ -115,7 +115,7 @@ model.summary()
 
 r=model.fit_generator(training_set,
                          samples_per_epoch = 64,
-                         nb_epoch = 5,
+                         nb_epoch = 1,
                          validation_data = test_set,
                          nb_val_samples = 32)
 
