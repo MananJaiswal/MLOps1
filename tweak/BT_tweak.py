@@ -13,16 +13,11 @@ from keras.preprocessing.image import ImageDataGenerator
 from keras.models import Sequential
 import numpy as np
 from glob import glob
-import matplotlib.pyplot as plt
 
-
-# In[ ]:
 
 
 IMAGE_SIZE = [224,224]
 
-
-# In[ ]:
 
 
 train_path = '/dataset/brain_tumor_dataset/Train'
@@ -66,12 +61,12 @@ test_datagen = ImageDataGenerator(rescale = 1./255)
 
 training_set = train_datagen.flow_from_directory('/dataset/brain_tumor_dataset/Train',
                                                  target_size = (224, 224),
-                                                 batch_size = 32,
+                                                 batch_size = 8,
                                                  class_mode = 'categorical')
 
 test_set = test_datagen.flow_from_directory('/dataset/brain_tumor_dataset/Test',
                                             target_size = (224, 224),
-                                            batch_size = 32,
+                                            batch_size = 8,
                                             class_mode = 'categorical')
 num_pixels = IMAGE_SIZE[1]*IMAGE_SIZE[1]
 num_pixels
@@ -103,7 +98,7 @@ accuracy = 0.0
 def build_model():
     r=model.fit_generator(training_set,
     validation_data=test_set,
-    epochs=5,
+    epochs=3,
     steps_per_epoch=len(training_set),
     validation_steps=len(test_set))
     test_accuracy=r.history['val_acc'][-1]
@@ -158,9 +153,11 @@ print("Model Saved!")
 
 
 # In[ ]:
-
-
+print("hey")
+print(best_accuracy)
 file1=open("result.txt","w")
+print("hey")
 file1=write(str(best_accuracy))
+print("hey")
 file1.close()
 
