@@ -119,161 +119,23 @@ r=model.fit_generator(training_set,
   steps_per_epoch=len(training_set),
   validation_steps=len(test_set))
 
-# In[20]:
-
-
-r.history
-
-
-# In[21]:
-
-
-train_accuracy=r.history['acc'][-1]
-train_accuracy
-
-
-# In[22]:
-
-
-test_accuracy=r.history['val_acc'][-1]
-test_accuracy
-
-
-# In[23]:
-
-
-import tensorflow as tf
-
-from keras.models import load_model
-
-
-# In[24]:
-
-
-test_accuracy = test_accuracy*100
-accuracy=test_accuracy
-accuracy
-
-
-# In[25]:
-
-
 model.save('braintumour_new_model2.h5')
 
 
-# In[26]:
+test_accuracy=r.history['val_acc'][0]
 
+
+accuracy = test_accuracy*100
 
 file1=open("result.txt","w")
-
-
-# In[27]:
 
 
 file1.write(str(accuracy))
 
 
-# In[28]:
-
-
 file1.close()
 
 
-# In[29]:
-
-
-#from keras.models import load_model
-
-
-# In[30]:
-
-
-#m = load_model('braintumour_new_model.h5')
-
-
-# In[31]:
-
-
-#from keras.preprocessing import image
-
-
-# In[32]:
-
-
-#test_image = image.load_img('C:/Users/LENOVO/Desktop/Brain Tumour Detection/brain_tumor_dataset/Y170.jpg', 
-               #target_size=(224,224))
-
-
-# In[33]:
-
-
-#type(test_image)
-
-
-# In[34]:
-
-
-#test_image
-
-
-# In[35]:
-
-
-#test_image = image.img_to_array(test_image)
-
-
-# In[36]:
-
-
-#type(test_image)
-
-
-# In[37]:
-
-
-#test_image.shape
-
-
-# In[38]:
-
-
-#import numpy as np 
-
-
-# In[39]:
-
-
-#test_image = np.expand_dims(test_image, axis=0)
-
-
-# In[40]:
-
-
-#test_image.shape
-
-
-# In[41]:
-
-
-#result = m.predict(test_image)
-
-
-# In[42]:
-
-
-#result
-
-
-# In[43]:
-
-
-#if result[0][0] == 1.0:
-   # print('Yes')
-#else:
-   # print('No')
-
-
-# In[ ]:
 
 
 
