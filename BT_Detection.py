@@ -45,7 +45,7 @@ for layer in vgg.layers:
 # In[6]:
 
 
-folders = glob('brain_tumor_dataset/Train/*')
+folders = glob('/dataset/brain_tumor_dataset/Train/*')
 
 
 # In[7]:
