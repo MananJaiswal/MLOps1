@@ -29,10 +29,7 @@ RUN pip3 install --upgrade tensorflow-probability
 RUN pip3  install keras==2.2.4
 RUN yum install git -y
 
-COPY . /braindirectory
-WORKDIR /braindirectory
-ENTRYPOINT ["python"]
-CMD [". /BT_Detection.py"]
+CMD [ "python3","/mlops/BT_Detection.py"]
 
 
 
