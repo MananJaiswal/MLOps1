@@ -102,10 +102,10 @@ accuracy = 0.0
 
 def build_model():
     r=model.fit_generator(training_set,
-                         samples_per_epoch = 64,
-                         nb_epoch = 3,
-                         validation_data = test_set,
-                         nb_val_samples = 32)
+    validation_data=test_set,
+    epochs=5,
+    steps_per_epoch=len(training_set),
+    validation_steps=len(test_set))
     test_accuracy=r.history['val_acc'][-1]
     accuracy=test_accuracy*100
     return accuracy
