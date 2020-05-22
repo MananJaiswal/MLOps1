@@ -8,8 +8,8 @@ from email.mime.text import MIMEText
 from email.mime.base import MIMEBase 
 from email import encoders 
    
-fromaddr = "jaiswal.manan1995@gmail.com"
-toaddr = "jaiswal.manan1995@gmail.com"
+fromaddr = ""
+toaddr = ""
    
 # instance of MIMEMultipart 
 msg = MIMEMultipart() 
@@ -55,7 +55,7 @@ s = smtplib.SMTP('smtp.gmail.com', 587)
 s.starttls() 
   
 # Authentication 
-s.login(fromaddr, "Manan@1998") 
+s.login(fromaddr, "") 
 print("login successful")
 # Converts the Multipart msg into a string 
 text = msg.as_string() 
